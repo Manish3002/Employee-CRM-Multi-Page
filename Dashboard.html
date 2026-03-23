@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – Employee CRM</title>
+
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+   
+        <a class="navbar-brand" href="Dashboard.html">💼 Employee CRM</a>
+
+        
+        <button class="navbar-toggler" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="Dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Employees.html">Employees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Assessment.html">Assessment</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+  <main class="container mt-4">
+
+   
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+
+    <h1 class="mb-4" style="color:#1a3c5e; font-weight:700;">Dashboard Overview</h1>
+
+
+    <div id="loading-spinner">
+      <div class="spinner-border text-primary" role="status"></div>
+      <p class="mt-2 text-muted">Loading data, please wait…</p>
+    </div>
+
+    
+    <div id="dashboard-content">
+
+  
+      <section id="statistics">
+        <h2 class="section-title">Employee Statistics</h2>
+        <div class="row g-3">
+          <div class="col-6 col-md-3">
+            <div class="stat-card card-blue">
+              <h2 id="total-employees">0</h2>
+              <p>Total Employees</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card card-green">
+              <h2 id="active-employees">0</h2>
+              <p>Active Employees</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card card-orange">
+              <h2 id="total-clients">0</h2>
+              <p>Total Clients</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card card-purple">
+              <h2 id="avg-performance">0%</h2>
+              <p>Avg Performance</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  
+      <section id="client-assignments" class="mt-5">
+        <h2 class="section-title">Client Assignments</h2>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th>Employee</th>
+                      <th>Department</th>
+                      <th>Clients Assigned</th>
+                    </tr>
+                  </thead>
+                  <tbody id="client-table-body">
+                  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
+      <section id="performance" class="mt-5">
+        <h2 class="section-title">Performance Progress</h2>
+        <div class="card shadow-sm">
+          <div class="card-body" id="performance-bars">
+          
+          </div>
+        </div>
+      </section>
+
+  
+      <section id="recent-activities" class="mt-5">
+        <h2 class="section-title">Recent Activities</h2>
+        <div class="card shadow-sm">
+          <div class="card-body" id="activities-list">
+           
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+ 
+  <footer>
+    <p>© 2025 Employee CRM System. All rights reserved.</p>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Our JS files -->
+  <script src="js/app.js"></script>
+
+  
+  <script>
+
+    $(document).ready(function () {
+
+    
+      $("#loading-spinner").show();
+      $("#dashboard-content").hide();
+
+      
+      async function loadDashboard() {
+        const employees = await simulateDataLoad(loadEmployees());
+
+     
+        $("#loading-spinner").hide();
+        $("#dashboard-content").show();
+
+        
+        const total      = employees.length;
+        const active     = employees.filter(e => e.status === "Active").length;
+        const totalClients = employees.reduce((sum, e) => sum + e.clients.length, 0);
+        const avgPerf    = Math.round(employees.reduce((sum, e) => sum + e.performance, 0) / total);
+
+      
+        $("#total-employees").text(total);
+        $("#active-employees").text(active);
+        $("#total-clients").text(totalClients);
+        $("#avg-performance").text(avgPerf + "%");
+
+     
+        const clientTbody = $("#client-table-body");
+        employees.forEach(function (emp) {
+          clientTbody.append(`
+            <tr>
+              <td>${emp.name}</td>
+              <td>${emp.department}</td>
+              <td>${emp.clients.length}</td>
+            </tr>
+          `);
+        });
+
+        
+        const perfDiv = $("#performance-bars");
+        employees.forEach(function (emp) {
+       
+          let color = "bg-success";
+          if (emp.performance < 60) color = "bg-danger";
+          else if (emp.performance < 80) color = "bg-warning";
+
+          perfDiv.append(`
+            <div class="progress-label">
+              <span>${emp.name}</span>
+              <span>${emp.performance}%</span>
+            </div>
+            <div class="progress mb-3" style="height:12px;">
+              <div class="progress-bar ${color}" role="progressbar"
+                style="width:${emp.performance}%"
+                aria-valuenow="${emp.performance}"
+                aria-valuemin="0" aria-valuemax="100">
+              </div>
+            </div>
+          `);
+        });
+
+  
+        const actDiv = $("#activities-list");
+        recentActivities.forEach(function (act) {
+          actDiv.append(`
+            <div class="activity-item">
+              <div class="activity-icon" style="background-color:${act.color}">
+                ${act.icon}
+              </div>
+              <div>
+                <p class="mb-0">${act.text}</p>
+                <small class="text-muted">${act.time}</small>
+              </div>
+            </div>
+          `);
+        });
+      }
+
+      loadDashboard();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "employee-crm-project",
+  "version": "1.0.0",
+  "description": "Employee CRM System - Frontend Project",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}

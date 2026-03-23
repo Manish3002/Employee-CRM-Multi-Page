@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assessment – Employee CRM</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="Dashboard.html">💼 Employee CRM</a>
+
+        <button class="navbar-toggler" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="Dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Employees.html">Employees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Assessment.html">Assessment</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="container mt-4">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="Dashboard.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Assessment</li>
+      </ol>
+    </nav>
+
+    <h1 class="mb-1" style="color:#1a3c5e; font-weight:700;">Skill Assessment Quiz</h1>
+    <p class="text-muted mb-4">Answer all questions and click Submit to see your score.</p>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner">
+      <div class="spinner-border text-primary" role="status"></div>
+      <p class="mt-2 text-muted">Loading quiz questions…</p>
+    </div>
+
+    <!-- Quiz Container (hidden until loaded) -->
+    <div id="quiz-container">
+
+      <!-- Result alert appears here (shown after submit) -->
+      <div id="quiz-results" style="display:none;"></div>
+
+      <!-- Questions are injected here by assessment.js -->
+      <div id="questions-wrapper"></div>
+
+      <!-- Submit Button -->
+      <div class="text-center mt-3 mb-5">
+        <button id="submitQuiz" class="btn btn-primary btn-lg px-5">
+          Submit Quiz
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Employee CRM System. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS + jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Our JS files -->
+  <script src="js/app.js"></script>
+  <script src="js/assessment.js"></script>
+
+</body>
+</html>

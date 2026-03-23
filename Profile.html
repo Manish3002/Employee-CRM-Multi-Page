@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile – Employee CRM</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+ 
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="Dashboard.html">💼 Employee CRM</a>
+
+        <button class="navbar-toggler" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="Dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Employees.html">Employees</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Assessment.html">Assessment</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="container mt-4">
+
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="Dashboard.html">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="Employees.html">Employees</a></li>
+        <li class="breadcrumb-item active" id="breadcrumb-name">Profile</li>
+      </ol>
+    </nav>
+
+   
+    <div id="profile-content">
+
+     
+      <div class="profile-header">
+        <div class="d-flex align-items-center gap-3">
+     
+          <div style="width:70px; height:70px; border-radius:50%;
+            background:rgba(255,255,255,0.25);
+            display:flex; align-items:center; justify-content:center;
+            font-size:2rem;">
+            👤
+          </div>
+          <div>
+            <h2 id="profile-name">Loading…</h2>
+            <p id="profile-role"></p>
+        
+            <span id="profile-status" class="badge mt-1"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+       
+        <div class="col-md-6">
+
+         
+          <div class="card shadow-sm mb-4">
+            <div class="card-header fw-bold" style="background:#e8f0fe; color:#1a3c5e;">
+              Employee Details
+            </div>
+            <div class="card-body">
+              <table class="table table-borderless mb-0">
+                <tr>
+                  <td class="text-muted">Employee ID</td>
+                  <td id="detail-id"><strong></strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Department</td>
+                  <td><span id="detail-dept" class="badge-dept"></span></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Role</td>
+                  <td id="detail-role"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Status</td>
+                  <td id="detail-status"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          
+          <div class="card shadow-sm">
+            <div class="card-header fw-bold" style="background:#e8f0fe; color:#1a3c5e;">
+              Assigned Clients
+            </div>
+            <div class="card-body">
+              <!-- Ordered list – filled by storage.js -->
+              <ol id="client-list"></ol>
+            </div>
+          </div>
+
+        </div>
+
+        
+        <div class="col-md-6">
+
+    
+          <div class="card shadow-sm mb-4">
+            <div class="card-header fw-bold" style="background:#e8f0fe; color:#1a3c5e;">
+              Performance Progress
+            </div>
+            <div class="card-body">
+              <div class="progress-label">
+                <span>Overall Performance</span>
+                <span id="perf-text"></span>
+              </div>
+              <div class="progress" style="height:18px;">
+                <div id="performance-bar" class="progress-bar"
+                  role="progressbar" style="width:0%"
+                  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="card shadow-sm">
+            <div class="card-header fw-bold" style="background:#e8f0fe; color:#1a3c5e;">
+              Assessment Results
+            </div>
+            <div class="card-body" id="assessment-section">
+              <table class="table table-borderless mb-2">
+                <tr>
+                  <td class="text-muted">Score</td>
+                  <td id="assessment-score"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Percentage</td>
+                  <td id="assessment-percentage"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Grade</td>
+                  <td><strong id="assessment-grade"></strong></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">Date</td>
+                  <td id="assessment-date"></td>
+                </tr>
+              </table>
+
+              <div class="progress" style="height:14px;">
+                <div id="assessment-bar" class="progress-bar bg-info"
+                  role="progressbar" style="width:0%"
+                  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Employee CRM System. All rights reserved.</p>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+  <script src="js/app.js"></script>
+  <script src="js/storage.js"></script>
+
+</body>
+</html>
