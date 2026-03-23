@@ -1,0 +1,203 @@
+
+body {
+  background-color: #f4f6f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* -- Navbar custom color -- */
+.navbar {
+  background-color: #1a3c5e !important;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #ffffff !important;
+}
+
+.nav-link {
+  color: #c8d8e8 !important;
+}
+
+.nav-link.active {
+  color: #ffffff !important;
+  font-weight: bold;
+  border-bottom: 2px solid #4dabf7;
+}
+
+/* -- Footer styling -- */
+footer {
+  background-color: #1a3c5e;
+  color: #c8d8e8;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 40px;
+}
+
+
+.stat-card {
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s;   /* smooth hover effect */
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);  /* card lifts up on hover */
+}
+
+/* Different colors for each stat card */
+.card-blue   { background: linear-gradient(135deg, #1a73e8, #4dabf7); }
+.card-green  { background: linear-gradient(135deg, #28a745, #56cf74); }
+.card-orange { background: linear-gradient(135deg, #fd7e14, #ffc107); }
+.card-purple { background: linear-gradient(135deg, #6f42c1, #b07fe8); }
+
+.stat-card h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* -- Section headings -- */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-left: 4px solid #1a73e8;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  color: #1a3c5e;
+}
+
+/* -- Employee table -- */
+.table thead {
+  background-color: #1a3c5e;
+  color: white;
+}
+
+.table tbody tr:hover {
+  background-color: #e8f0fe;  /* light blue on row hover */
+}
+
+/* -- Buttons -- */
+.btn-view {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.btn-view:hover {
+  background-color: #1558b0;
+  color: white;
+}
+
+/* -- Assessment / quiz card -- */
+.quiz-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.quiz-card .question-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1a3c5e;
+}
+
+/* -- Loading spinner wrapper -- */
+#loading-spinner {
+  text-align: center;
+  padding: 60px 0;
+  display: none;         /* hidden by default, shown via JS */
+}
+
+/* -- Profile page -- */
+.profile-header {
+  background: linear-gradient(135deg, #1a3c5e, #1a73e8);
+  color: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+}
+
+.profile-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.profile-header p {
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* -- Badge colors -- */
+.badge-dept {
+  background-color: #e8f0fe;
+  color: #1a3c5e;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* -- Progress bar label -- */
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* -- Breadcrumb -- */
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* -- Recent activity list -- */
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+
+@media (max-width: 576px) {
+  .stat-card h2 {
+    font-size: 1.8rem;
+  }
+}
